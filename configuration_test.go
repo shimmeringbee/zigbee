@@ -15,6 +15,6 @@ func TestConfiguration(t *testing.T) {
 		assert.NotEqual(t, null.PANID, actual.PANID)
 		assert.NotEqual(t, null.ExtendedPANID, actual.ExtendedPANID)
 		assert.NotEqual(t, null.NetworkKey, actual.NetworkKey)
-		assert.Equal(t, DefaultZLLChannel, actual.Channel)
+		assert.Equal(t, DefaultChannel, actual.Channel)
 	})
 }

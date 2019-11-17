@@ -18,7 +18,7 @@ type NetworkKey [16]byte
 
 var Channels = []uint8{11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26}
 var ZLLChannels = []uint8{11, 15, 20, 25}
-var DefaultZLLChannel = ZLLChannels[1]
+var DefaultChannel = ZLLChannels[1]
 
 var ChannelToFrequencies = map[uint8]uint16{
 	11: 2405,

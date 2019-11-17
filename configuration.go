@@ -31,6 +31,6 @@ func GenerateNetworkConfiguration() (nc NetworkConfiguration, err error) {
 	}
 	copy(nc.NetworkKey[:], networkKey)
 
-	nc.Channel = DefaultZLLChannel
+	nc.Channel = DefaultChannel
 	return
 }
