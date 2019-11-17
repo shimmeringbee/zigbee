@@ -15,6 +15,8 @@ func GenerateNetworkConfiguration() (nc NetworkConfiguration, err error) {
 	if err != nil {
 		return
 	}
+
+	panId[0] &= 0x3f
 	copy(nc.PANID[:], panId)
 
 	extendedPanId := make([]byte, 8)
