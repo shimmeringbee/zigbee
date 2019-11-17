@@ -13,8 +13,11 @@ type NetworkKey [16]byte
 // https://www.metageek.com/training/resources/zigbee-wifi-coexistence.html
 // https://www.researchgate.net/figure/WIFI-and-Zigbee-Overlapping-Channels-in-The-24Ghz-ISM-Band_fig1_265226405
 
-// Channels 15, 20 and 26 are in the space between standard 20Mhz 802.11bg channels, so will be least likely to receive
+// Channels 15, 20 and 25 are in the space between standard 20Mhz 802.11bg channels, so will be least likely to receive
 // WiFi interference. Though 11 does clash slightly with Wifi Channel 1 lower sideband, thus default to channel 15.
+
+// Channel 26 is also outside of normal WiFi clashes, however it's not supported on all Zigbee devices and is not
+// recognised by ZLL as a valid channel.
 
 var Channels = []uint8{11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26}
 var ZLLChannels = []uint8{11, 15, 20, 25}
