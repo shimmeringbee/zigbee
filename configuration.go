@@ -2,9 +2,6 @@ package zigbee
 
 import "crypto/rand"
 
-var DEFAULT_ZLL_CHANNEL uint8 = 11
-var ZLL_CHANNELS = []uint8{11, 15, 20, 25}
-
 type NetworkConfiguration struct {
 	PANID         PANID
 	ExtendedPANID ExtendedPANID
@@ -34,6 +31,6 @@ func GenerateNetworkConfiguration() (nc NetworkConfiguration, err error) {
 	}
 	copy(nc.NetworkKey[:], networkKey)
 
-	nc.Channel = DEFAULT_ZLL_CHANNEL
+	nc.Channel = DefaultZLLChannel
 	return
 }
