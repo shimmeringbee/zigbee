@@ -43,3 +43,10 @@ var ChannelToFrequencies = map[uint8]uint16{
 }
 
 var TCLinkKey = NetworkKey{0x5a, 0x69, 0x67, 0x42, 0x65, 0x65, 0x41, 0x6c, 0x6c, 0x69, 0x61, 0x6e, 0x63, 0x65, 0x30, 0x39}
+
+const (
+	BroadcastAll                 NetworkAddress = 0xffff
+	BroadcastAlwaysOnReceivers   NetworkAddress = 0xfffd
+	BroadcastRoutersCoordinators NetworkAddress = 0xfffc
+	BroadcastLowPowerRouters     NetworkAddress = 0xfffd
+)
