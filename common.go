@@ -1,6 +1,13 @@
 package zigbee
 
+import "fmt"
+
 type IEEEAddress uint64
+
+func (a IEEEAddress) String() string {
+	return fmt.Sprintf("%016x", uint64(a))
+}
+
 type NetworkAddress uint16
 
 type PANID uint16
