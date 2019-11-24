@@ -1,6 +1,9 @@
 package zigbee
 
-import "crypto/rand"
+import (
+	"math/rand"
+	"time"
+)
 
 type NetworkConfiguration struct {
 	PANID         PANID
@@ -10,21 +13,10 @@ type NetworkConfiguration struct {
 }
 
 func GenerateNetworkConfiguration() (nc NetworkConfiguration, err error) {
-	panId := make([]byte, 2)
-	_, err = rand.Read(panId)
-	if err != nil {
-		return
-	}
+	rand.Seed(time.Now().UnixNano())
 
-	panId[0] &= 0x3f
-	copy(nc.PANID[:], panId)
-
-	extendedPanId := make([]byte, 8)
-	_, err = rand.Read(extendedPanId)
-	if err != nil {
-		return
-	}
-	copy(nc.ExtendedPANID[:], extendedPanId)
+	nc.PANID = PANID(rand.Uint32() & 0x3fff)
+	nc.ExtendedPANID = ExtendedPANID(rand.Uint64())
 
 	networkKey := make([]byte, 16)
 	_, err = rand.Read(networkKey)
