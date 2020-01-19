@@ -1,12 +1,16 @@
 package zigbee
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type IEEEAddress uint64
 
 func (a IEEEAddress) String() string {
 	return fmt.Sprintf("%016x", uint64(a))
 }
+
+var EmptyIEEEAddress = IEEEAddress(0)
 
 type NetworkAddress uint16
 
