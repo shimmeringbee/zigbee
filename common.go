@@ -18,6 +18,8 @@ type PANID uint16
 type ExtendedPANID uint64
 type NetworkKey [16]byte
 
+type ZCLClusterID uint16
+
 // https://en.wikipedia.org/wiki/Zigbee#Radio_hardware
 // https://acuitysupport.zendesk.com/hc/en-us/articles/225413967-Zigbee-Networking-Basics-35-000ft-view-
 // https://community.smartthings.com/t/faq-networking-and-reducing-channel-interference-between-wifi-and-zigbee/40159
