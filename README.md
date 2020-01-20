@@ -1,4 +1,4 @@
-# Shimmering Bee: Z-Stack
+# Shimmering Bee: Zigbee Common
 
 [![license](https://img.shields.io/github/license/shimmeringbee/zigbee.svg)](https://github.com/shimmeringbee/zigbee/blob/master/LICENSE)
 [![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg)](https://github.com/RichardLitt/standard-readme)
