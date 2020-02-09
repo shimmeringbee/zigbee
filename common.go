@@ -20,6 +20,15 @@ type NetworkKey [16]byte
 
 type ZCLClusterID uint16
 
+type EndpointDescription struct {
+	Endpoint          byte
+	ProfileID         uint16
+	DeviceID          uint16
+	DeviceVersion     uint8
+	InClusterList     []ZCLClusterID
+	OutClusterList    []ZCLClusterID
+}
+
 // https://en.wikipedia.org/wiki/Zigbee#Radio_hardware
 // https://acuitysupport.zendesk.com/hc/en-us/articles/225413967-Zigbee-Networking-Basics-35-000ft-view-
 // https://community.smartthings.com/t/faq-networking-and-reducing-channel-interference-between-wifi-and-zigbee/40159
