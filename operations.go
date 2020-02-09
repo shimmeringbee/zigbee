@@ -26,19 +26,20 @@ type BasicDeviceEvent struct {
 
 type DeviceJoinEvent BasicDeviceEvent
 
-type DeviceRediscoveredEvent BasicDeviceEvent
+type DeviceAppearEvent BasicDeviceEvent
 
 type DeviceLeaveEvent BasicDeviceEvent
 
 type DeviceIncomingMessageEvent struct {
-	GroupID             uint16
-	ClusterID           ZCLClusterID
-	SourceAddress       IEEEAddress
-	SourceEndpoint      uint8
-	DestinationEndpoint uint8
-	Broadcast           bool
-	Secure              bool
-	LinkQuality         uint8
-	Sequence            uint8
-	Data                []byte
+	GroupID              uint16
+	ClusterID            ZCLClusterID
+	SourceIEEEAddress    IEEEAddress
+	SourceNetworkAddress NetworkAddress
+	SourceEndpoint       uint8
+	DestinationEndpoint  uint8
+	Broadcast            bool
+	Secure               bool
+	LinkQuality          uint8
+	Sequence             uint8
+	Data                 []byte
 }
