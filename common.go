@@ -33,9 +33,10 @@ type ZCLClusterID uint16
 type LogicalType uint8
 
 const (
-	Coordinator LogicalType = 0
-	Router      LogicalType = 1
-	EndDevice   LogicalType = 2
+	Coordinator LogicalType = 0x00
+	Router      LogicalType = 0x01
+	EndDevice   LogicalType = 0x02
+	Unknown     LogicalType = 0xff
 )
 
 type EndpointDescription struct {
