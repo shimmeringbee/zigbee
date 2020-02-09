@@ -14,19 +14,42 @@ var EmptyIEEEAddress = IEEEAddress(0)
 
 type NetworkAddress uint16
 
+const (
+	BroadcastAll                 NetworkAddress = 0xffff
+	BroadcastAlwaysOnReceivers   NetworkAddress = 0xfffd
+	BroadcastRoutersCoordinators NetworkAddress = 0xfffc
+	BroadcastLowPowerRouters     NetworkAddress = 0xfffb
+)
+
 type PANID uint16
 type ExtendedPANID uint64
+
 type NetworkKey [16]byte
+
+var TCLinkKey = NetworkKey{0x5a, 0x69, 0x67, 0x42, 0x65, 0x65, 0x41, 0x6c, 0x6c, 0x69, 0x61, 0x6e, 0x63, 0x65, 0x30, 0x39}
 
 type ZCLClusterID uint16
 
+type LogicalType uint8
+
+const (
+	Coordinator LogicalType = 0
+	Router      LogicalType = 1
+	EndDevice   LogicalType = 2
+)
+
 type EndpointDescription struct {
-	Endpoint          byte
-	ProfileID         uint16
-	DeviceID          uint16
-	DeviceVersion     uint8
-	InClusterList     []ZCLClusterID
-	OutClusterList    []ZCLClusterID
+	Endpoint       byte
+	ProfileID      uint16
+	DeviceID       uint16
+	DeviceVersion  uint8
+	InClusterList  []ZCLClusterID
+	OutClusterList []ZCLClusterID
+}
+
+type NodeDescription struct {
+	LogicalType      LogicalType
+	ManufacturerCode uint16
 }
 
 // https://en.wikipedia.org/wiki/Zigbee#Radio_hardware
@@ -63,12 +86,3 @@ var ChannelToFrequencies = map[uint8]uint16{
 	25: 2475,
 	26: 2480,
 }
-
-var TCLinkKey = NetworkKey{0x5a, 0x69, 0x67, 0x42, 0x65, 0x65, 0x41, 0x6c, 0x6c, 0x69, 0x61, 0x6e, 0x63, 0x65, 0x30, 0x39}
-
-var (
-	BroadcastAll                 NetworkAddress = 0xffff
-	BroadcastAlwaysOnReceivers   NetworkAddress = 0xfffd
-	BroadcastRoutersCoordinators NetworkAddress = 0xfffc
-	BroadcastLowPowerRouters     NetworkAddress = 0xfffb
-)
