@@ -39,6 +39,15 @@ const (
 	Unknown     LogicalType = 0xff
 )
 
+type Relationship uint8
+
+const (
+	RelationshipParent  Relationship = 0x00
+	RelationshipChild   Relationship = 0x01
+	RelationshipSibling Relationship = 0x02
+	RelationshipUnknown Relationship = 0x03
+)
+
 type EndpointDescription struct {
 	Endpoint       byte
 	ProfileID      uint16
