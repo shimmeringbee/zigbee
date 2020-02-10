@@ -15,6 +15,10 @@ type NodeBinder interface {
 	UnbindFromNode(ctx context.Context, networkAddress NetworkAddress, sourceAddress IEEEAddress, sourceEndpoint byte, destinationAddress IEEEAddress, destinationEndpoint byte, cluster ZCLClusterID) error
 }
 
+type NodeSender interface {
+	SendNodeMessage(ctx context.Context, destinationAddress IEEEAddress, sourceEndpoint byte, destinationEndpoint byte, cluster ZCLClusterID, data []byte) error
+}
+
 type EventReceiver interface {
 	ReadEvent(ctx context.Context) (interface{}, error)
 }
