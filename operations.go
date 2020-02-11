@@ -2,7 +2,6 @@ package zigbee
 
 import (
 	"context"
-	"github.com/shimmeringbee/zigbee"
 	"time"
 )
 
@@ -26,9 +25,9 @@ type EventReceiver interface {
 }
 
 type Device struct {
-	IEEEAddress    zigbee.IEEEAddress
-	NetworkAddress zigbee.NetworkAddress
-	LogicalType    zigbee.LogicalType
+	IEEEAddress    IEEEAddress
+	NetworkAddress NetworkAddress
+	LogicalType    LogicalType
 	LQI            uint8
 	Depth          uint8
 	LastDiscovered time.Time
