@@ -2,6 +2,8 @@ package zigbee
 
 import (
 	"context"
+	"github.com/shimmeringbee/zigbee"
+	"time"
 )
 
 type NodeQueryer interface {
@@ -23,18 +25,29 @@ type EventReceiver interface {
 	ReadEvent(ctx context.Context) (interface{}, error)
 }
 
-type BasicDeviceEvent struct {
-	NetworkAddress NetworkAddress
-	IEEEAddress    IEEEAddress
+type Device struct {
+	IEEEAddress    zigbee.IEEEAddress
+	NetworkAddress zigbee.NetworkAddress
+	LogicalType    zigbee.LogicalType
+	LQI            uint8
+	Depth          uint8
+	LastDiscovered time.Time
+	LastReceived   time.Time
 }
 
-type DeviceJoinEvent BasicDeviceEvent
+type DeviceJoinEvent struct {
+	Device
+}
 
-type DeviceUpdateEvent BasicDeviceEvent
+type DeviceUpdateEvent struct {
+	Device
+}
 
-type DeviceLeaveEvent BasicDeviceEvent
+type DeviceLeaveEvent struct {
+	Device
+}
 
-type DeviceIncomingMessageEvent struct {
+type IncomingMessage struct {
 	GroupID              uint16
 	ClusterID            ZCLClusterID
 	SourceIEEEAddress    IEEEAddress
@@ -46,4 +59,9 @@ type DeviceIncomingMessageEvent struct {
 	LinkQuality          uint8
 	Sequence             uint8
 	Data                 []byte
+}
+
+type DeviceIncomingMessageEvent struct {
+	Device
+	IncomingMessage
 }
