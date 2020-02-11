@@ -11,8 +11,8 @@ type NodeQueryer interface {
 }
 
 type NodeBinder interface {
-	BindToNode(ctx context.Context, networkAddress NetworkAddress, sourceAddress IEEEAddress, sourceEndpoint byte, destinationAddress IEEEAddress, destinationEndpoint byte, cluster ZCLClusterID) error
-	UnbindFromNode(ctx context.Context, networkAddress NetworkAddress, sourceAddress IEEEAddress, sourceEndpoint byte, destinationAddress IEEEAddress, destinationEndpoint byte, cluster ZCLClusterID) error
+	BindNodeToController(ctx context.Context, nodeAddress IEEEAddress, sourceEndpoint byte, destinationEndpoint byte, cluster ZCLClusterID) error
+	UnbindNodeFromController(ctx context.Context, nodeAddress IEEEAddress, sourceEndpoint byte, destinationEndpoint byte, cluster ZCLClusterID) error
 }
 
 type NodeSender interface {
