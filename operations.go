@@ -5,9 +5,9 @@ import (
 )
 
 type NodeQueryer interface {
-	QueryNodeDescription(ctx context.Context, networkAddress NetworkAddress) (NodeDescription, error)
-	QueryNodeEndpoints(ctx context.Context, networkAddress NetworkAddress) ([]byte, error)
-	QueryNodeEndpointDescription(ctx context.Context, networkAddress NetworkAddress, endpoint byte) (EndpointDescription, error)
+	QueryNodeDescription(ctx context.Context, networkAddress IEEEAddress) (NodeDescription, error)
+	QueryNodeEndpoints(ctx context.Context, networkAddress IEEEAddress) ([]byte, error)
+	QueryNodeEndpointDescription(ctx context.Context, networkAddress IEEEAddress, endpoint byte) (EndpointDescription, error)
 }
 
 type NodeBinder interface {
