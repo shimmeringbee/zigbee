@@ -30,7 +30,7 @@ type BasicDeviceEvent struct {
 
 type DeviceJoinEvent BasicDeviceEvent
 
-type DeviceAppearEvent BasicDeviceEvent
+type DeviceUpdateEvent BasicDeviceEvent
 
 type DeviceLeaveEvent BasicDeviceEvent
 
