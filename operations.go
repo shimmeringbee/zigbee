@@ -8,16 +8,16 @@ import (
 type NodeQueryer interface {
 	QueryNodeDescription(ctx context.Context, networkAddress IEEEAddress) (NodeDescription, error)
 	QueryNodeEndpoints(ctx context.Context, networkAddress IEEEAddress) ([]byte, error)
-	QueryNodeEndpointDescription(ctx context.Context, networkAddress IEEEAddress, endpoint byte) (EndpointDescription, error)
+	QueryNodeEndpointDescription(ctx context.Context, networkAddress IEEEAddress, endpoint Endpoint) (EndpointDescription, error)
 }
 
 type NodeBinder interface {
-	BindNodeToController(ctx context.Context, nodeAddress IEEEAddress, sourceEndpoint byte, destinationEndpoint byte, cluster ZCLClusterID) error
-	UnbindNodeFromController(ctx context.Context, nodeAddress IEEEAddress, sourceEndpoint byte, destinationEndpoint byte, cluster ZCLClusterID) error
+	BindNodeToController(ctx context.Context, nodeAddress IEEEAddress, sourceEndpoint Endpoint, destinationEndpoint Endpoint, cluster ClusterID) error
+	UnbindNodeFromController(ctx context.Context, nodeAddress IEEEAddress, sourceEndpoint Endpoint, destinationEndpoint Endpoint, cluster ClusterID) error
 }
 
 type NodeSender interface {
-	SendNodeMessage(ctx context.Context, destinationAddress IEEEAddress, sourceEndpoint byte, destinationEndpoint byte, cluster ZCLClusterID, data []byte) error
+	SendNodeMessage(ctx context.Context, destinationAddress IEEEAddress, sourceEndpoint Endpoint, destinationEndpoint Endpoint, cluster ClusterID, data []byte) error
 }
 
 type EventReceiver interface {
@@ -47,12 +47,12 @@ type DeviceLeaveEvent struct {
 }
 
 type IncomingMessage struct {
-	GroupID              uint16
-	ClusterID            ZCLClusterID
+	GroupID              GroupID
+	ClusterID            ClusterID
 	SourceIEEEAddress    IEEEAddress
 	SourceNetworkAddress NetworkAddress
-	SourceEndpoint       uint8
-	DestinationEndpoint  uint8
+	SourceEndpoint       Endpoint
+	DestinationEndpoint  Endpoint
 	Broadcast            bool
 	Secure               bool
 	LinkQuality          uint8

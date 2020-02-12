@@ -28,7 +28,26 @@ type NetworkKey [16]byte
 
 var TCLinkKey = NetworkKey{0x5a, 0x69, 0x67, 0x42, 0x65, 0x65, 0x41, 0x6c, 0x6c, 0x69, 0x61, 0x6e, 0x63, 0x65, 0x30, 0x39}
 
-type ZCLClusterID uint16
+type ClusterID uint16
+
+func (z ClusterID) IsManufacturerSpecific() bool {
+	return z >= 0xfc00
+}
+
+type GroupID uint16
+
+type ProfileID uint16
+
+const (
+	ProfileIndustrialPlantMonitoring    ProfileID = 0x0101
+	ProfileHomeAutomation               ProfileID = 0x0104
+	ProfileCommercialBuildingAutomation ProfileID = 0x0105
+	ProfileTelecomApplications          ProfileID = 0x0107
+	ProfilePersonalHomeAndHospitalCare  ProfileID = 0x0108
+	ProfileAdvancedMeteringInitiative   ProfileID = 0x0109
+)
+
+type Endpoint uint8
 
 type LogicalType uint8
 
@@ -53,8 +72,8 @@ type EndpointDescription struct {
 	ProfileID      uint16
 	DeviceID       uint16
 	DeviceVersion  uint8
-	InClusterList  []ZCLClusterID
-	OutClusterList []ZCLClusterID
+	InClusterList  []ClusterID
+	OutClusterList []ClusterID
 }
 
 type NodeDescription struct {
@@ -71,7 +90,7 @@ type NodeDescription struct {
 // Channels 15, 20 and 25 are in the space between standard 20Mhz 802.11bg channels, so will be least likely to receive
 // WiFi interference. Though 11 does clash slightly with Wifi Channel 1 lower sideband, thus default to channel 15.
 
-// Channel 26 is also outside of normal WiFi clashes, however it's not supported on all Zigbee devices and is not
+// Channel 26 is also outside of US/EU WiFi clashes, however it's not supported on all Zigbee devices and is not
 // recognised by ZLL as a valid channel.
 
 var Channels = []uint8{11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26}
