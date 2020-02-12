@@ -68,8 +68,8 @@ const (
 )
 
 type EndpointDescription struct {
-	Endpoint       byte
-	ProfileID      uint16
+	Endpoint       Endpoint
+	ProfileID      ProfileID
 	DeviceID       uint16
 	DeviceVersion  uint8
 	InClusterList  []ClusterID
