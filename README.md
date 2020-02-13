@@ -29,6 +29,13 @@ import "github.com/shimmeringbee/zigbee"
 
 ## Usage
 
+Most of the `zigbee` library are constants and struct definitions, however a random Zigbee configuration can be
+created with.
+
+```go
+netCfg, _ := zigbee.GenerateNetworkConfiguration()
+```
+
 ## Maintainers
 
 [@pwood](https://github.com/pwood)
