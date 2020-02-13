@@ -24,7 +24,7 @@ type EventReceiver interface {
 	ReadEvent(ctx context.Context) (interface{}, error)
 }
 
-type Device struct {
+type Node struct {
 	IEEEAddress    IEEEAddress
 	NetworkAddress NetworkAddress
 	LogicalType    LogicalType
@@ -34,16 +34,16 @@ type Device struct {
 	LastReceived   time.Time
 }
 
-type DeviceJoinEvent struct {
-	Device
+type NodeJoinEvent struct {
+	Node
 }
 
-type DeviceUpdateEvent struct {
-	Device
+type NodeUpdateEvent struct {
+	Node
 }
 
-type DeviceLeaveEvent struct {
-	Device
+type NodeLeaveEvent struct {
+	Node
 }
 
 type IncomingMessage struct {
@@ -60,7 +60,7 @@ type IncomingMessage struct {
 	Data                 []byte
 }
 
-type DeviceIncomingMessageEvent struct {
-	Device
+type NodeIncomingMessageEvent struct {
+	Node
 	IncomingMessage
 }
