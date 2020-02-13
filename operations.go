@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-type NodeQueryer interface {
+type NodeQuerier interface {
 	QueryNodeDescription(ctx context.Context, networkAddress IEEEAddress) (NodeDescription, error)
 	QueryNodeEndpoints(ctx context.Context, networkAddress IEEEAddress) ([]byte, error)
 	QueryNodeEndpointDescription(ctx context.Context, networkAddress IEEEAddress, endpoint Endpoint) (EndpointDescription, error)
