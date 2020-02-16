@@ -29,6 +29,8 @@ import "github.com/shimmeringbee/zigbee"
 
 ## Usage
 
+**This libraries API is unstable and should not yet be relied upon.**
+
 Most of the `zigbee` library are constants and struct definitions, however a random Zigbee configuration can be
 created with.
 
