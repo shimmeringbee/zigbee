@@ -17,7 +17,7 @@ type NodeBinder interface {
 }
 
 type NodeSender interface {
-	SendNodeMessage(ctx context.Context, destinationAddress IEEEAddress, sourceEndpoint Endpoint, destinationEndpoint Endpoint, cluster ClusterID, data []byte) error
+	SendNodeMessageToNode(ctx context.Context, destinationAddress IEEEAddress, message ApplicationMessage) error
 }
 
 type EventReceiver interface {
@@ -48,16 +48,20 @@ type NodeLeaveEvent struct {
 
 type IncomingMessage struct {
 	GroupID              GroupID
-	ClusterID            ClusterID
 	SourceIEEEAddress    IEEEAddress
 	SourceNetworkAddress NetworkAddress
-	SourceEndpoint       Endpoint
-	DestinationEndpoint  Endpoint
 	Broadcast            bool
 	Secure               bool
 	LinkQuality          uint8
 	Sequence             uint8
-	Data                 []byte
+	ApplicationMessage   ApplicationMessage
+}
+
+type ApplicationMessage struct {
+	ClusterID           ClusterID
+	SourceEndpoint      Endpoint
+	DestinationEndpoint Endpoint
+	Data                []byte
 }
 
 type NodeIncomingMessageEvent struct {
