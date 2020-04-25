@@ -24,6 +24,13 @@ type EventReceiver interface {
 	ReadEvent(ctx context.Context) (interface{}, error)
 }
 
+type Provider interface {
+	NodeQuerier
+	NodeBinder
+	NodeSender
+	EventReceiver
+}
+
 type Node struct {
 	IEEEAddress    IEEEAddress
 	NetworkAddress NetworkAddress
