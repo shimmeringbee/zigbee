@@ -5,6 +5,10 @@ import (
 	"time"
 )
 
+type AdapterInfo interface {
+	AdapterNode() Node
+}
+
 type NodeQuerier interface {
 	QueryNodeDescription(ctx context.Context, networkAddress IEEEAddress) (NodeDescription, error)
 	QueryNodeEndpoints(ctx context.Context, networkAddress IEEEAddress) ([]byte, error)
@@ -25,6 +29,7 @@ type EventReceiver interface {
 }
 
 type Provider interface {
+	AdapterInfo
 	NodeQuerier
 	NodeBinder
 	NodeSender
