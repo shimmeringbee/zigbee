@@ -5,6 +5,11 @@ import (
 	"time"
 )
 
+type NetworkJoining interface {
+	PermitJoin(ctx context.Context, allRouters bool) error
+	DenyJoin(ctx context.Context) error
+}
+
 type AdapterInfo interface {
 	AdapterNode() Node
 }
@@ -29,6 +34,7 @@ type EventReceiver interface {
 }
 
 type Provider interface {
+	NetworkJoining
 	AdapterInfo
 	NodeQuerier
 	NodeBinder

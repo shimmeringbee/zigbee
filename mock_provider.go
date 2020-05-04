@@ -9,6 +9,16 @@ type MockProvider struct {
 	mock.Mock
 }
 
+func (m *MockProvider) PermitJoin(ctx context.Context, allRouters bool) error {
+	args := m.Called(ctx, allRouters)
+	return args.Error(0)
+}
+
+func (m *MockProvider) DenyJoin(ctx context.Context) error {
+	args := m.Called(ctx)
+	return args.Error(0)
+}
+
 func (m *MockProvider) AdapterNode() Node {
 	args := m.Called()
 	return args.Get(0).(Node)
