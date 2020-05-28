@@ -29,9 +29,9 @@ func (m *MockProvider) QueryNodeDescription(ctx context.Context, networkAddress 
 	return args.Get(0).(NodeDescription), args.Error(1)
 }
 
-func (m *MockProvider) QueryNodeEndpoints(ctx context.Context, networkAddress IEEEAddress) ([]byte, error) {
+func (m *MockProvider) QueryNodeEndpoints(ctx context.Context, networkAddress IEEEAddress) ([]Endpoint, error) {
 	args := m.Called(ctx, networkAddress)
-	return args.Get(0).([]byte), args.Error(1)
+	return args.Get(0).([]Endpoint), args.Error(1)
 }
 
 func (m *MockProvider) QueryNodeEndpointDescription(ctx context.Context, networkAddress IEEEAddress, endpoint Endpoint) (EndpointDescription, error) {
