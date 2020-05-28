@@ -16,7 +16,7 @@ type AdapterInfo interface {
 
 type NodeQuerier interface {
 	QueryNodeDescription(ctx context.Context, networkAddress IEEEAddress) (NodeDescription, error)
-	QueryNodeEndpoints(ctx context.Context, networkAddress IEEEAddress) ([]byte, error)
+	QueryNodeEndpoints(ctx context.Context, networkAddress IEEEAddress) ([]Endpoint, error)
 	QueryNodeEndpointDescription(ctx context.Context, networkAddress IEEEAddress, endpoint Endpoint) (EndpointDescription, error)
 }
 
