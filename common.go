@@ -115,3 +115,13 @@ var ChannelToFrequencies = map[uint8]uint16{
 	25: 2475,
 	26: 2480,
 }
+
+// Error retypes a string so that constant errors can be used.
+type Error string
+
+// Error returns the reason for the error.
+func (e Error) Error() string {
+	return string(e)
+}
+
+var ContextExpired = Error("context expired")
