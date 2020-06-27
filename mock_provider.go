@@ -58,3 +58,8 @@ func (m *MockProvider) ReadEvent(ctx context.Context) (interface{}, error) {
 	args := m.Called(ctx)
 	return args.Get(0), args.Error(1)
 }
+
+func (m *MockProvider) RegisterAdapterEndpoint(ctx context.Context, endpoint Endpoint, appProfileId ProfileID, appDeviceId uint16, appDeviceVersion uint8, inClusters []ClusterID, outClusters []ClusterID) error {
+	args := m.Called(ctx, endpoint, appProfileId, appDeviceId, appDeviceVersion, inClusters, outClusters)
+	return args.Error(0)
+}

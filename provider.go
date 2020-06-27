@@ -33,6 +33,10 @@ type EventReceiver interface {
 	ReadEvent(ctx context.Context) (interface{}, error)
 }
 
+type EndpointRegistration interface {
+	RegisterAdapterEndpoint(ctx context.Context, endpoint Endpoint, appProfileId ProfileID, appDeviceId uint16, appDeviceVersion uint8, inClusters []ClusterID, outClusters []ClusterID) error
+}
+
 type Provider interface {
 	NetworkJoining
 	AdapterInfo
@@ -40,6 +44,7 @@ type Provider interface {
 	NodeBinder
 	NodeSender
 	EventReceiver
+	EndpointRegistration
 }
 
 type Node struct {
