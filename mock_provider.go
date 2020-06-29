@@ -49,7 +49,7 @@ func (m *MockProvider) UnbindNodeFromController(ctx context.Context, nodeAddress
 	return args.Error(0)
 }
 
-func (m *MockProvider) SendNodeMessageToNode(ctx context.Context, destinationAddress IEEEAddress, message ApplicationMessage) error {
+func (m *MockProvider) SendApplicationMessageToNode(ctx context.Context, destinationAddress IEEEAddress, message ApplicationMessage, requireAck bool) error {
 	args := m.Called(ctx, destinationAddress, message)
 	return args.Error(0)
 }

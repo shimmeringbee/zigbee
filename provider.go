@@ -26,7 +26,7 @@ type NodeBinder interface {
 }
 
 type NodeSender interface {
-	SendNodeMessageToNode(ctx context.Context, destinationAddress IEEEAddress, message ApplicationMessage) error
+	SendApplicationMessageToNode(ctx context.Context, destinationAddress IEEEAddress, message ApplicationMessage, requireAck bool) error
 }
 
 type EventReceiver interface {
