@@ -82,7 +82,7 @@ type EndpointDescription struct {
 
 type NodeDescription struct {
 	LogicalType      LogicalType
-	ManufacturerCode uint16
+	ManufacturerCode ManufacturerCode
 }
 
 // https://en.wikipedia.org/wiki/Zigbee#Radio_hardware
