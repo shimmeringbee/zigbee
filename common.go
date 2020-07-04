@@ -38,6 +38,10 @@ type GroupID uint16
 
 type ProfileID uint16
 
+type ManufacturerCode uint16
+
+const NoManufacturer = ManufacturerCode(0x0000)
+
 const (
 	ProfileIndustrialPlantMonitoring    ProfileID = 0x0101
 	ProfileHomeAutomation               ProfileID = 0x0104
