@@ -2,6 +2,8 @@ package zigbee
 
 import (
 	"fmt"
+	"math/rand"
+	"time"
 )
 
 type IEEEAddress uint64
@@ -11,6 +13,16 @@ func (a IEEEAddress) String() string {
 }
 
 var EmptyIEEEAddress = IEEEAddress(0)
+
+func GenerateLocalAdministeredIEEEAddress() IEEEAddress {
+	rand.Seed(time.Now().UnixNano())
+
+	// 0xbee5 happens to also be a Locally Administered EUI-64 address.
+	prefix := uint64(0xbee5000000000000)
+	mask := uint64(0x0000111111111111)
+
+	return IEEEAddress(prefix | (rand.Uint64() & mask))
+}
 
 type NetworkAddress uint16
 
