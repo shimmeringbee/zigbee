@@ -69,15 +69,19 @@ type NodeLeaveEvent struct {
 	Node
 }
 
+type SourceAddress struct {
+	IEEEAddress    IEEEAddress
+	NetworkAddress NetworkAddress
+}
+
 type IncomingMessage struct {
-	GroupID              GroupID
-	SourceIEEEAddress    IEEEAddress
-	SourceNetworkAddress NetworkAddress
-	Broadcast            bool
-	Secure               bool
-	LinkQuality          uint8
-	Sequence             uint8
-	ApplicationMessage   ApplicationMessage
+	GroupID            GroupID
+	SourceAddress      SourceAddress
+	Broadcast          bool
+	Secure             bool
+	LinkQuality        uint8
+	Sequence           uint8
+	ApplicationMessage ApplicationMessage
 }
 
 type ApplicationMessage struct {
