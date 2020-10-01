@@ -19,7 +19,7 @@ func GenerateLocalAdministeredIEEEAddress() IEEEAddress {
 
 	// 0xbee5 happens to also be a Locally Administered EUI-64 address.
 	prefix := uint64(0xbee5000000000000)
-	mask := uint64(0x0000111111111111)
+	mask := uint64(0x0000FFFFFFFFFFFF)
 
 	return IEEEAddress(prefix | (rand.Uint64() & mask))
 }
