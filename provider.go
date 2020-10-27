@@ -48,13 +48,13 @@ type Provider interface {
 }
 
 type Node struct {
-	IEEEAddress    IEEEAddress    `json:"ieee_address"`
-	NetworkAddress NetworkAddress `json:"network_address"`
-	LogicalType    LogicalType    `json:"logical_type"`
-	LQI            uint8          `json:"lqi,omitempty"`
-	Depth          uint8          `json:"depth,omitempty"`
-	LastDiscovered time.Time      `json:"last_discovered,omitempty"`
-	LastReceived   time.Time      `json:"last_received,omitempty"`
+	IEEEAddress    IEEEAddress
+	NetworkAddress NetworkAddress
+	LogicalType    LogicalType
+	LQI            uint8
+	Depth          uint8
+	LastDiscovered time.Time
+	LastReceived   time.Time
 }
 
 type NodeJoinEvent struct {
