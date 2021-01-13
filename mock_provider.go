@@ -5,8 +5,15 @@ import (
 	"github.com/stretchr/testify/mock"
 )
 
+var _ Provider = (*MockProvider)(nil)
+
 type MockProvider struct {
 	mock.Mock
+}
+
+func (m *MockProvider) RemoveNode(ctx context.Context, networkAddress IEEEAddress) error {
+	args := m.Called(ctx, networkAddress)
+	return args.Error(0)
 }
 
 func (m *MockProvider) PermitJoin(ctx context.Context, allRouters bool) error {
