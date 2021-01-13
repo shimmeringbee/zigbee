@@ -14,6 +14,10 @@ type AdapterInfo interface {
 	AdapterNode() Node
 }
 
+type NodeRemover interface {
+	RemoveNode(ctx context.Context, networkAddress NetworkAddress) error
+}
+
 type NodeQuerier interface {
 	QueryNodeDescription(ctx context.Context, networkAddress IEEEAddress) (NodeDescription, error)
 	QueryNodeEndpoints(ctx context.Context, networkAddress IEEEAddress) ([]Endpoint, error)
@@ -43,6 +47,7 @@ type Provider interface {
 	NodeQuerier
 	NodeBinder
 	NodeSender
+	NodeRemover
 	EventReceiver
 	EndpointRegistration
 }
