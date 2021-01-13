@@ -15,7 +15,7 @@ type AdapterInfo interface {
 }
 
 type NodeRemover interface {
-	RemoveNode(ctx context.Context, networkAddress NetworkAddress) error
+	RemoveNode(ctx context.Context, networkAddress IEEEAddress) error
 }
 
 type NodeQuerier interface {
