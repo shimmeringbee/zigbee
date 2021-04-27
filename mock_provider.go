@@ -11,7 +11,12 @@ type MockProvider struct {
 	mock.Mock
 }
 
-func (m *MockProvider) RemoveNode(ctx context.Context, networkAddress IEEEAddress) error {
+func (m *MockProvider) RequestNodeLeave(ctx context.Context, networkAddress IEEEAddress) error {
+	args := m.Called(ctx, networkAddress)
+	return args.Error(0)
+}
+
+func (m *MockProvider) ForceNodeLeave(ctx context.Context, networkAddress IEEEAddress) error {
 	args := m.Called(ctx, networkAddress)
 	return args.Error(0)
 }
