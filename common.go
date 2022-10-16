@@ -76,6 +76,19 @@ const (
 	Unknown     LogicalType = 0xff
 )
 
+func (l LogicalType) String() string {
+	switch l {
+	case Coordinator:
+		return "coordinator"
+	case Router:
+		return "router"
+	case EndDevice:
+		return "enddevice"
+	default:
+		return "Unknown"
+	}
+}
+
 type Relationship uint8
 
 const (
